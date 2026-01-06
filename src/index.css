@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 0 0% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 32 95% 50%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 10%;
+
+    --radius: 0.25rem;
+
+    /* Custom tokens */
+    --header-bg: 200 10% 12%;
+    --header-foreground: 0 0% 98%;
+    --hero-overlay: 200 10% 15%;
+    --section-border: 0 0% 85%;
+
+    /* Typography */
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+  }
+
+  .dark {
+    --background: 200 10% 12%;
+    --foreground: 0 0% 98%;
+
+    --card: 200 10% 15%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 200 10% 15%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 200 10% 12%;
+
+    --secondary: 200 10% 20%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 200 10% 20%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 32 95% 50%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 200 10% 25%;
+    --input: 200 10% 25%;
+    --ring: 0 0% 85%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply text-3xl md:text-4xl font-semibold pb-2 border-b-2 border-accent inline-block;
+    font-family: var(--font-serif);
+  }
+
+  .quote-text {
+    @apply text-lg md:text-xl text-center italic text-foreground/90;
+    font-family: var(--font-serif);
+  }
+
+  .nav-link {
+    @apply text-header-foreground hover:text-accent transition-colors duration-200 font-medium;
+  }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
