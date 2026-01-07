@@ -2,10 +2,11 @@
   "name": "trustmint-backend",
   "version": "1.0.0",
   "description": "Backend service for TrustMint fake news verification and NFT minting",
-  "main": "src/app.js",
+  "type": "module",
+  "main": "index.js",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": ["fake-news", "blockchain", "ai", "trustmint"],
   "author": "TrustMint Team",
@@ -15,5 +16,8 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
   }
 }
