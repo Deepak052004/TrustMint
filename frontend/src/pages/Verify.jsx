@@ -23,15 +23,17 @@ const Verify = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/verify-news", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          headline: headline.trim(),
-          content: text,
-          sourceUrl: newsUrl.trim(),
-        }),
-      });
+      const res = await fetch(
+        "https://trustmint-vqux.onrender.com/api/verify-news",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            content: text,
+            sourceUrl: newsUrl.trim(),
+          }),
+        }
+      );
 
       if (!res.ok) {
         throw new Error("Backend error");
@@ -73,7 +75,7 @@ const Verify = () => {
           backgroundPosition: "center",
         }}
       >
-        {/* DARK OVERLAY (IMPORTANT FIX) */}
+        {/* DARK OVERLAY */}
         <div className="absolute inset-0 bg-hero-overlay/80 pointer-events-none" />
 
         {/* CONTENT */}
