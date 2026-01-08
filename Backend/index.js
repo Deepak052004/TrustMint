@@ -72,7 +72,10 @@ app.get("/health", (req, res) => {
 
 app.post("/api/verify-news", async (req, res) => {
   try {
-    const { content, sourceUrl = "" } = req.body;
+    const body = req.body || {};
+const content = body.content;
+const sourceUrl = body.sourceUrl || "";
+
 
     if (!content) {
       return res.status(400).json({ error: "Content is required" });
