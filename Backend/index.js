@@ -82,17 +82,25 @@ app.post("/api/verify-news", async (req, res) => {
       .update(content)
       .digest("hex");
 
-    /* ---- ML SERVICE ---- */
-    const ml = await axios.post(`${ML_SERVICE_URL}/verify`, {
-      text: content,
-    });
+    /* ---- ML SERVICE (SAFE FALLBACK, NO FEATURE CHANGE) ---- */
+    let probability = 0.5;
+    let emi = 0;
+    let certainty = 0;
 
-    const probability = ml.data?.probability ?? 0.5;
-    const emi = ml.data?.emotional_manipulation?.emi_score ?? 0;
-    const certainty =
-      ml.data?.linguistic_certainty?.certainty_ratio > 0.7
-        ? ml.data.linguistic_certainty.certainty_ratio
-        : 0;
+    try {
+      const ml = await axios.post(`${ML_SERVICE_URL}/verify`, {
+        text: content,
+      });
+
+      probability = ml.data?.probability ?? 0.5;
+      emi = ml.data?.emotional_manipulation?.emi_score ?? 0;
+      certainty =
+        ml.data?.linguistic_certainty?.certainty_ratio > 0.7
+          ? ml.data.linguistic_certainty.certainty_ratio
+          : 0;
+    } catch {
+      // ML service unavailable → fallback values already set
+    }
 
     const domain = getDomain(sourceUrl);
     const sourceScore = domain
