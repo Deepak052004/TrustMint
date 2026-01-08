@@ -6,7 +6,6 @@ import crypto from "crypto";
 import dotenv from "dotenv";
 
 dotenv.config();
-console.log("🔥 TRUSTMINT BACKEND v4 — INDEX.JS ACTIVE");
 
 /* ================= APP SETUP ================= */
 
